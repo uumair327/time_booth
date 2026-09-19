@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umair Ansari — Time Booth | A Journey Through Time</title>
+  <meta name="description" content="Time Booth — An interactive journey through time, from childhood in 2002 to the present day. Explore 37 captured memories and life chapters of Umair Ansari.">
+  <meta name="author" content="Umair Ansari">
+  <meta name="keywords" content="Umair Ansari, Time Booth, timeline, photo booth, memories, personal journey, photography, interactive gallery">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://umairansari.in/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umairansari.in/">
+  <meta property="og:title" content="Umair Ansari — Time Booth | A Journey Through Time">
+  <meta property="og:description" content="An interactive visual timeline and photo booth spanning 2002 to present. Explore chapters from childhood, school days, college, and professional milestones.">
+  <meta property="og:image" content="https://umairansari.in/photos/2019.jpg">
+  <meta property="og:site_name" content="Umair Ansari — Time Booth">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://umairansari.in/">
+  <meta name="twitter:title" content="Umair Ansari — Time Booth | A Journey Through Time">
+  <meta name="twitter:description" content="An interactive visual timeline and photo booth spanning 2002 to present. Explore chapters from childhood to the present day.">
+  <meta name="twitter:image" content="https://umairansari.in/photos/2019.jpg">
+
+  <!-- Mobile & PWA -->
+  <meta name="theme-color" content="#08090d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏳</text></svg>">
+  <link rel="apple-touch-icon" href="photos/2019.jpg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://umairansari.in/#website",
+        "url": "https://umairansari.in/",
+        "name": "Umair Ansari — Time Booth",
+        "description": "An interactive timeline photo booth and memory gallery.",
+        "publisher": {
+          "@id": "https://umairansari.in/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://umairansari.in/#person",
+        "name": "Umair Ansari",
+        "url": "https://umairansari.in/",
+        "birthDate": "2002-11-01",
+        "image": "https://umairansari.in/photos/2019.jpg",
+        "jobTitle": "Engineer & Builder",
+        "description": "Curator and creator of Time Booth, exploring personal history, technology, and moments captured in time."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Ambient Background -->
+  <div class="ambient-bg">
+    <div class="ambient-orb"></div>
+    <div class="ambient-orb"></div>
+    <div class="ambient-orb"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-brand" id="nav-brand">
+      <div class="nav-logo">TB</div>
+      <span class="nav-title">Time Booth</span>
+    </a>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><button class="nav-link active" data-section="hero">Home</button></li>
+      <li><button class="nav-link" data-section="booth">Timeline</button></li>
+      <li><button class="nav-link" data-section="gallery">Gallery</button></li>
+      <li><span class="nav-age-badge" id="nav-age-badge">Age 23</span></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>Born 01 November 2002</span>
+    </div>
+    <h1 class="hero-title">
+      Through the<br>
+      <span class="highlight">Lens of Time</span>
+    </h1>
+    <p class="hero-subtitle">
+      Every photograph is a frozen moment — a bookmark in the story of life. 
+      Scroll through the booth and relive the journey from the very beginning.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value" id="stat-years">0</div>
+        <div class="hero-stat-label">Years</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" id="stat-months">0</div>
+        <div class="hero-stat-label">Months</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" id="stat-days">0</div>
+        <div class="hero-stat-label">Days</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" id="stat-photos">0</div>
+        <div class="hero-stat-label">Memories</div>
+      </div>
+    </div>
+    <div class="hero-scroll-cta" id="scroll-cta">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Journey Stats Bar -->
+  <section class="journey-stats reveal" id="journey-stats">
+    <div class="journey-stats-inner">
+      <div class="journey-stat-item">
+        <span class="journey-stat-icon">📸</span>
+        <div class="journey-stat-data">
+          <span class="journey-stat-num" id="js-total-photos">0</span>
+          <span class="journey-stat-text">Photos</span>
+        </div>
+      </div>
+      <div class="journey-stat-divider"></div>
+      <div class="journey-stat-item">
+        <span class="journey-stat-icon">🗓️</span>
+        <div class="journey-stat-data">
+          <span class="journey-stat-num" id="js-total-years">0</span>
+          <span class="journey-stat-text">Years Captured</span>
+        </div>
+      </div>
+      <div class="journey-stat-divider"></div>
+      <div class="journey-stat-item">
+        <span class="journey-stat-icon">🎭</span>
+        <div class="journey-stat-data">
+          <span class="journey-stat-num" id="js-total-eras">0</span>
+          <span class="journey-stat-text">Life Eras</span>
+        </div>
+      </div>
+      <div class="journey-stat-divider"></div>
+      <div class="journey-stat-item">
+        <span class="journey-stat-icon">📍</span>
+        <div class="journey-stat-data">
+          <span class="journey-stat-num" id="js-year-range">—</span>
+          <span class="journey-stat-text">Timeline Span</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booth Section (Horizontal Timeline) -->
+  <section class="booth-section" id="booth">
+    <div class="section-header reveal">
+      <div class="section-tag">Timeline</div>
+      <h2 class="section-title">The Booth</h2>
+      <p class="section-subtitle">Drag, scroll, or use arrows to navigate through time</p>
+    </div>
+
+    <!-- Search -->
+    <div class="search-container reveal">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="search-input" placeholder="Search by year, title, era..." autocomplete="off">
+        <button class="search-clear" id="search-clear">✕</button>
+      </div>
+      <div class="search-results-count" id="search-results-count"></div>
+    </div>
+
+    <!-- Year Navigation -->
+    <div class="year-nav reveal" id="year-nav"></div>
+
+    <!-- View Toggle -->
+    <div style="display: flex; justify-content: center; margin-bottom: 24px;" class="reveal">
+      <div class="view-toggle">
+        <button class="view-toggle-btn active" id="view-booth-btn" data-view="booth">🏛️ Booth</button>
+        <button class="view-toggle-btn" id="view-grid-btn" data-view="grid">⊞ Grid</button>
+      </div>
+    </div>
+
+    <!-- Horizontal timeline booth -->
+    <div class="booth-frame" id="booth-view">
+      <div class="timeline-viewport" id="timeline-viewport">
+        <div class="timeline-track" id="timeline-track"></div>
+        <div class="drag-hint" id="drag-hint">← Drag or scroll to explore →</div>
+      </div>
+      <div class="booth-shelf"></div>
+
+      <!-- Scroll Controls -->
+      <div class="scroll-controls">
+        <button class="scroll-btn" id="scroll-left" aria-label="Scroll left">◀</button>
+        <div class="scroll-progress">
+          <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+        </div>
+        <button class="scroll-btn" id="scroll-right" aria-label="Scroll right">▶</button>
+      </div>
+    </div>
+
+    <!-- Grid view (initially hidden) -->
+    <div class="eras-section" id="grid-view" style="display: none;">
+      <div id="grid-container"></div>
+    </div>
+
+    <!-- No results state -->
+    <div class="no-results" id="no-results" style="display: none;">
+      <div class="no-results-icon">🔍</div>
+      <div class="no-results-title">No memories found</div>
+      <div class="no-results-desc" id="no-results-desc">Try searching with different keywords</div>
+    </div>
+  </section>
+
+  <!-- Gallery Section (Masonry Photo Wall) -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header reveal">
+      <div class="section-tag">Gallery</div>
+      <h2 class="section-title">Photo Wall</h2>
+      <p class="section-subtitle">All memories at a glance — filter by era or just enjoy the view</p>
+    </div>
+
+    <!-- Era Filter Chips -->
+    <div class="gallery-filters reveal" id="gallery-filters">
+      <button class="filter-chip active" data-era="all">All <span class="filter-count" id="filter-count-all"></span></button>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="gallery-masonry" id="gallery-masonry"></div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">◀</button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">▶</button>
+    <div class="lightbox-content">
+      <div class="lightbox-image-container">
+        <img id="lightbox-img" src="" alt="">
+      </div>
+      <div class="lightbox-details">
+        <div class="lightbox-year" id="lightbox-year"></div>
+        <div class="lightbox-title" id="lightbox-title"></div>
+        <div class="lightbox-desc" id="lightbox-desc"></div>
+        <div class="lightbox-meta">
+          <div class="lightbox-meta-item">
+            <span class="lightbox-meta-label">Era</span>
+            <span class="lightbox-meta-value" id="lightbox-era"></span>
+          </div>
+          <div class="lightbox-meta-item">
+            <span class="lightbox-meta-label">Age</span>
+            <span class="lightbox-meta-value" id="lightbox-age"></span>
+          </div>
+          <div class="lightbox-meta-item">
+            <span class="lightbox-meta-label">Chapter</span>
+            <span class="lightbox-meta-value" id="lightbox-chapter"></span>
+          </div>
+          <a class="lightbox-download" id="lightbox-download" href="" download aria-label="Download photo">
+            <span>⬇</span> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <!-- Surprise Me FAB -->
+  <button class="surprise-fab" id="surprise-fab" aria-label="Random memory">
+    <span class="surprise-fab-icon">✨</span>
+    <span class="surprise-fab-text">Surprise Me</span>
+  </button>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Scroll to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">TB</div>
+        <span class="footer-text">Time Booth — Every moment matters.</span>
+      </div>
+      <div class="footer-tech">
+        <span>Built with care</span>
+        <span class="dot"></span>
+        <span id="footer-year">2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
