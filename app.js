@@ -1057,6 +1057,44 @@
     overlay?.addEventListener('click', (e) => {
       if (e.target === overlay) closeLightbox();
     });
+
+    // Touch swipe gestures for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    overlay?.addEventListener('touchstart', (e) => {
+      if (!e.changedTouches || e.changedTouches.length === 0) return;
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    overlay?.addEventListener('touchend', (e) => {
+      if (!e.changedTouches || e.changedTouches.length === 0) return;
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleLightboxSwipe();
+    }, { passive: true });
+
+    function handleLightboxSwipe() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      const absDiffX = Math.abs(diffX);
+      const absDiffY = Math.abs(diffY);
+
+      // Horizontal swipe (threshold: 40px)
+      if (absDiffX > 40 && absDiffX > absDiffY) {
+        if (diffX < 0) {
+          navigateLightbox(1); // Swipe left -> next
+        } else {
+          navigateLightbox(-1); // Swipe right -> prev
+        }
+      } else if (diffY > 80 && absDiffY > absDiffX * 1.5) {
+        // Swipe down to dismiss
+        closeLightbox();
+      }
+    }
   }
 
   function openLightbox(index) {
@@ -1418,5 +1456,8 @@
   } else {
     init();
   }
+
+  // Expose API for programmatic access and testing
+  window.__timeBooth = { openLightbox, closeLightbox, navigateLightbox };
 
 })();
